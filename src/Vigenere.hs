@@ -1,13 +1,13 @@
-{-# LANGUAGE ViewPatterns #-}
-
 module Vigenere where
 
-import Letter
-import Data.Char
+import Data.List
 
-square :: Letter -> Letter -> Letter
-square (fromEnum -> i) (fromEnum -> j) = toEnum $ rem (i + j) 26
+alphabet = "abcdefghijklmnop"
 
-encrypt :: String -> String -> String
-encrypt (map get -> secret) (map get -> text) =
-    map toChar $ zipWith square (cycle secret) text
+encryptLetter k v = case (elemIndex k alphabet, elemIndex v alphabet) of
+    (Just i, Just j) -> alphabet !! rem (i + j) (length alphabet)
+    _ -> v
+
+encryptString :: String -> String -> String
+encryptString secret text =
+    zipWith encryptLetter (cycle secret) text
