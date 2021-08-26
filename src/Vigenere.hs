@@ -2,7 +2,7 @@ module Vigenere where
 
 import Data.List
 
-alphabet = "abcdefghijklmnop"
+alphabet = ['a'..'z']
 
 encryptLetter k v = case (elemIndex k alphabet, elemIndex v alphabet) of
     (Just i, Just j) -> alphabet !! rem (i + j) (length alphabet)
