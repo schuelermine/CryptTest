@@ -1,1 +1,1 @@
-run = "stack --verbosity warn repl"
+run = "clear; echo Type :l Vigenere and use the encryptString function; ghci -isrc"
